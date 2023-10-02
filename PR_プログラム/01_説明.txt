@@ -16,13 +16,14 @@
 　　その時 cloudwatchのインストールの監視メトリクス、ダッシュボードが更新されなかったです。
 ・lambda、cloudwatchのapiでelasticbeanstalkがスケールする際に、自動にダッシュボード更新をしました。
 　※ファイル：AutoUpdateDashboard_add comment.py
-　　cloudwatch eventでスケールイベントが発生したら、lambdaをtriggerする仕組みです。
-　　ロジック説明をドキュメントにしたが、手元はなくて申し訳ございません。
+　　cloudwatch eventでスケールイベントが発生したら、lambdaをtriggerする仕組みです。「writeDashboardBodyIntoJson.pl」は cloudwatch dashboardのjsonを作成するスクリプトです。
+　　会社のメンバーにロジック説明のドキュメントを作成してあげたが、今手元になくて申し訳ございません。
 
 -----------------
 申し訳ございませんが、下記の理由であまり公開できないものがあります。
 　・所属会社のもの：セキュリティー問題
 　・個人のプログラム：web scrapingのデータ収集
-　・当時課題があってプログラムしただけで、今手元にないプログラム
-※会社でのソフトウェア開発経験がない為、clean code/ design patternなどはまだ経験だありません。
-　今後ぜひ頑張りたいと思います。
+　・当時何かの課題があってプログラムしただけで、今手元にないプログラム
+
+※会社でのソフトウェア開発経験がない為、clean code/design patternなどはまだ経験がありません。
+　ぜひ頑張りたいと思います。
