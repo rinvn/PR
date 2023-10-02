@@ -15,7 +15,7 @@ close $fh;
 
 
 
-#Function to reate Json file 
+#Function to create Json file 
 
 #print object into filename
 sub printObject{
