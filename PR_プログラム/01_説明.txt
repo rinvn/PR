@@ -1,0 +1,28 @@
+①cloudwatchのメトリクスを拡張
+・課題：
+　　2019年頃 aws cloudwatch 監視デフォルトメトリクスは不足でした。
+　　自動スケールサービスはインスタンスを自動に作成する際に、監視のデフォルトメトリクスしかないため困りました。
+・拡張メトリクスをデプロイする方法があり、awsはperlスクリプトを提供していました。
+・awsのperlスクリプトに監視がないメトリクス：cpu load averageなどを追加しました。
+　※ファイル：mon-put-instance-data.pl
+　　　　　　--load-average-1min Reports load average per cpu core (1min)
+  　　　　　--load-average-5min Reports load average per cpu core (5min) 
+・自分で追加したメトリクスのスクリプトをs3に保存し、elasticbeanstalkなど自動にインスタンスを作成する際に、
+　init（os起動）の時スクリプトをダウンロードして、デプロイし監視を自動に追加した。
+
+②elasticbeanstalkのダッシュボードを自動更新
+・課題
+　　elasticbeanstalkが自動にインスタンスを増やしたり、減らしたりしています。
+　　その時 cloudwatchのインストールの監視メトリクス、ダッシュボードが更新されなかったです。
+・lambda、cloudwatchのapiでelasticbeanstalkがスケールする際に、自動にダッシュボード更新をしました。
+　※ファイル：AutoUpdateDashboard_add comment.py
+　　cloudwatch eventでスケールイベントが発生したら、lambdaをtriggerする仕組みです。
+　　ロジック説明をドキュメントにしたが、手元はなくて申し訳ございません。
+
+-----------------
+申し訳ございませんが、下記の理由であまり公開できないものがあります。
+　・所属会社のもの：セキュリティー問題
+　・個人のプログラム：web scrapingのデータ収集
+　・当時課題があってプログラムしただけで、今手元にないプログラム
+※会社でのソフトウェア開発経験がない為、clean code/ design patternなどはま経験だありません。
+　今後ぜひ頑張りたいと思います。
